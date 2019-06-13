@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход тренера</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" href = ".../static/css/style.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/trainerAuth.css}" href = ".../static/css/trainerAuth.css"/>
+</head>
+<body>
+
+    <div th:replace="fragments :: header"></div>
+    <br>
+
+    <h1 color="white" align="center">Вход</h1>
+    <form th:object="${trainerForm}" th:action="@{/trainer/auth}" method="POST">
+        <table id="auth" cellspacing="0">
+            <tr>
+                <td>
+                    Почта:
+                </td>
+                <td class="input_text">
+                    <input type="text" th:field="*{email}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Пароль:
+                </td>
+                <td class="input_text">
+                    <input type="text" th:field="*{password}">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="input_enter">
+                    <input type="submit" value="Вход">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <br>
+    <div th:replace="fragments :: footer"></div>
+</body>
+</html>

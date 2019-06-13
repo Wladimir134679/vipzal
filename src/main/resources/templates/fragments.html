@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Фрагменты сайта</title>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" href = "../static/css/style.css"/>
+    </head>
+    <body>
+
+                <table class="top-menu" th:fragment="header" th:object="${header}">
+                    <tr>
+                        <td class="button">
+                            <a th:href="@{/index}">Главная</a>
+                        </td>
+                        <td class="button">
+                            <a th:href="@{/trainers}">Тренеры</a>
+                        </td>
+                        <td class="button">
+                            <a th:href="@{/about}">О нас</a>
+                        </td>
+                        <td>
+                            <p>
+                                Пользователям:
+                            </p>
+                            <div th:if="${isConnectionUser}">
+                                <p>
+                                    <span th:text="${userHeader.getFIO()}"></span>
+                                </p>
+                                <a th:href="@{/profile}">Профиль</a>
+                                |
+                                <a th:href="@{/exit}">Выход</a>
+                            </div>
+                            <div th:unless="${isConnectionUser}">
+                                <a th:href="@{/authorization}">Вход</a>
+                                |
+                                <a th:href="@{/registration}">Регистраци</a>
+                            </div>
+                        </td>
+                        <td>
+                            <p>
+                                Тренерам
+                            </p>
+                            <div th:if="${isConnectionTrainer}">
+                                <p>
+                                    <span th:text="${trainerHeader.getFIO()}"></span>
+                                </p>
+                                <a th:href="@{/trainer/profile}">Профиль</a>
+                                |
+                                <a th:href="@{/trainer/exit}">Выход</a>
+                            </div>
+                            <div th:unless="${isConnectionTrainer}">
+                                <a th:href="@{/trainer/auth}">Вход</a>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+
+        <div th:fragment="footer" class="footer">
+<!--            Пользователям:-->
+<!--            <a href="" th:href="@{/authorization}">Вход</a>-->
+<!--            |-->
+<!--            <a href="" th:href="@{/profile}">Профиль</a>-->
+<!--            |-->
+<!--            <a href="" th:href="@{/exit}">Выход</a>-->
+<!--            |-->
+<!--            <a href="" th:href="@{/registration}">Регистрация</a>-->
+<!--            <br>-->
+<!--            Тренерам:-->
+<!--            <a th:href="@{/trainer/auth}">Вход</a>-->
+<!--            |-->
+<!--            <a th:href="@{/trainer/profile}">Профиль</a>-->
+<!--            |-->
+<!--            <a th:href="@{/trainer/exit}">Выход</a>-->
+
+<!--            <br>-->
+<!--            <br>-->
+            <a th:href="@{/index}">На главную</a>
+            |
+            <a th:href="@{/about}">О проекте</a>
+            <br>
+            <br>
+
+            <a th:href="@{/server/com1}">Серверная команда №1(Создать тренера - Путин)</a>
+        </div>
+    </body>
+</html>

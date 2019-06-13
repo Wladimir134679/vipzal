@@ -1,0 +1,91 @@
+body{
+    background-color: #444444;
+}
+
+.title{
+    color: #dddddd;
+    text-align: center;
+}
+
+.table-input{
+    width: 50%;
+    margin: 0 auto;
+    alignment: bottom;
+    border: 1px double #660000;
+}
+
+.table-input tr td{
+    padding: 5px;
+}
+
+.table-input td.info{
+    color: white;
+    width: 25%;
+}
+
+.table-input td.input input{
+    border: 1px double black;
+    background: none;
+    width: 95%;
+    color: white;
+}
+
+.table-input tr td{
+    /*border: 1px double blue;*/
+}
+
+.table-input td.input-submit{
+    padding: 5px;
+    display:table-cell;
+    vertical-align: middle;
+}
+
+.table-input td.input-submit input{
+    margin: 0 auto;
+    width: 25%;
+    height: 30px;
+    color: white;
+    border: 1px double black;
+    background: #006600;
+}
+.table-input td.input-submit input:hover{
+    background: #008800;
+}
+
+.table-input td.back div{
+    alignment: center;
+    width: 95%;
+    color: white;
+    border: 1px double black;
+    background: #660000;
+}
+
+.table-input td.back div a{
+    display: block;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    padding: 5px;
+}
+
+.table-input td.back div:hover{
+    background: #880000;
+    text-decoration: none;
+}
+
+.table-input td.back div a:hover {
+    color: white;
+}
+
+.table-input td.back div a:link{
+    color:white;
+}
+
+.table-input td.error {
+    border: 1px double red;
+}
+
+.table-input td.error div{
+    font-size: 30px;
+    color: red;
+}

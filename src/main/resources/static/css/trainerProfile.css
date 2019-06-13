@@ -1,0 +1,195 @@
+
+.info-body div{
+    display: block;
+}
+
+.table-main{
+    width: 75%;
+    border: 1px double #dddddd;
+    color: white;
+    background: none;
+    margin: 5px auto;
+}
+
+.table-main tr td{
+    padding: 5px;
+    color: white;
+    border: none;
+    border-bottom: 2px double #8888aa;
+}
+
+.schedule h1{
+    color: white;
+    text-align: center;
+}
+/*   ОКНО ДОБАВЛЕНИЯ */
+
+#newSchedule.background{
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: #000000dd;
+    z-index: 100;
+}
+
+#newSchedule .win{
+    width: 50%;
+    background: #444444;
+    border: 2px double #880000;
+    margin: 10% auto;
+}
+
+#newSchedule table{
+    width: 100%;
+    height: 100%;
+}
+
+#newSchedule table th{
+    background: #444444;
+    color: white;
+}
+
+#newSchedule b{
+    color: white;
+}
+
+#newSchedule table tr td{
+    /*border: 1px double #00dd00;*/
+}
+
+#newSchedule .win .title{
+    color: white;
+    font-size: 30px;
+    height: 40px;
+    padding: 5px;
+    border-bottom: 1px double #660000;
+}
+
+#newSchedule table .buttons{
+    height: 50px;
+    border-top: 1px double #770000;
+}
+
+#newSchedule .buttons .back{
+    width: 100px;
+    float: left;
+}
+
+#newSchedule .buttons .back a{
+    margin: 5px;
+    padding: 5px 5px;
+    display: block;
+    border: 1px double #880000;
+    background: #555555;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+#newSchedule .buttons .back a:hover{
+    border: 1px double #880000;
+    background: #666666;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+}
+
+#newSchedule h3{
+    color:white;
+}
+
+#newSchedule .body{
+    padding: 5px;
+    width: 45%;
+    vertical-align: top;
+    border-right: 1px double #770000;
+}
+
+#newSchedule .body input{
+    color: white;
+    border: 1px double #666666;
+}
+
+#newSchedule .listUser{
+    padding: 5px;
+    vertical-align: top;
+}
+
+#newSchedule .listUserInfo{
+    border: 1px double #660000;
+}
+
+#newSchedule .listUserInfo .title-id{
+    border-right: 1px double #770000;
+}
+
+#newSchedule .listUserInfo tr td{
+    border: none;
+    border-bottom: 2px double #770000;
+    color: white;
+    padding: 2px;
+}
+
+#newSchedule .buttons input{
+    font-size: 17px;
+    float: left;
+    display: block;
+    margin: 5px;
+    padding: 5px 5px;
+    width: 100px;
+    border: 1px double #880000;
+    background: #555555;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+}
+
+#newSchedule .buttons input:hover{
+    border: 1px double #880000;
+    background: #666666;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+}
+
+
+/*  Окно болезней пользователя */
+
+#win-diseases {
+    width: 50%;
+    border: 1px double #555555;
+    background: #333333;
+    margin: 10% auto;
+}
+
+#win-diseases .table-main{
+    background: none;
+    width: 100%;
+}
+
+#win-diseases .table-main tr th{
+    color: white;
+    border-left: 1px double #aaaaaa;
+    border-right: 1px double #aaaaaa;
+    background: #444444;
+    font-size: 18px;
+}
+
+#win-diseases .table-main tr th *{
+    background: none;
+}
+
+#win-diseases .table-main tr td{
+    color: white;
+    padding: 2px 5px;
+    border-bottom: 1px double #880000;
+}
+
+/*#win-diseases .list-disease{*/
+/*    width: 100%;*/
+/*}*/

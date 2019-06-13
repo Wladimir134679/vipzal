@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Тренера</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" href = "../static/css/style.css"/>
+</head>
+<body>
+<div th:replace="fragments :: header"></div>
+<br>
+
+<table id="index-table" cellspacing="0">
+    <tr>
+        <td>
+            <div>
+                <h3>Наши тренера</h3>
+                <table id="table-data" cellspacing="0">
+                    <tr>
+                        <th>
+                            ФИО
+                        </th>
+                        <th>
+                            Номер телефона
+                        </th>
+                        <th>
+                            Почта
+                        </th>
+                        <th>
+                            Провёл занятий
+                        </th>
+                        <th>
+                            Описание
+                        </th>
+                    </tr>
+                    <tr th:each="data : ${trainersList}">
+                        <td>
+                            <span th:text="*{data.getFIO()}"></span>
+                        </td>
+                        <td>
+                            <span th:text="*{data.getPhone()}"></span>
+                        </td>
+                        <td>
+                            <span th:text="*{data.getEmail()}"></span>
+                        </td>
+                        <td>
+                            <span th:text="*{data.getNumClass()}"></span>
+                        </td>
+                        <td>
+                            <span th:text="*{data.getDescription()}"></span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+    </tr>
+</table>
+<br>
+<div th:replace="~{fragments :: footer}"> </div>
+</body>
+</html>

@@ -1,0 +1,94 @@
+
+#body_schedule{
+    vertical-align: top;
+    width: 100%;
+    height: 100%;
+}
+
+* tr{
+    text-align: center;
+}
+/* Окно добавления болезни */
+
+#window .win{
+    background: #666666;
+    border: 1px double #000;
+    width: 50%;
+    margin: 10% auto;
+}
+
+
+#window .win .body{
+
+}
+
+#window .win .body b{
+    color: white;
+}
+
+#window .win .body input{
+    color: white;
+    border: 1px double #777;
+    padding: 2px;
+    width: 85%;
+}
+
+
+#window .win .body textarea{
+    color: white;
+    border: 1px double #777;
+    padding: 2px;
+    width: 85%;
+}
+
+#window .win table{
+    width: 100%;
+}
+
+#window .win table th{
+    color: white;
+    font-size: 18px;
+}
+
+
+#window .win table .buttons{
+    alignment: center;
+}
+
+#window .win table #button.back{
+    border: 1px double #770000;
+    margin: 5px;
+    width: 150px;
+    float: left;
+}
+
+#window .win table #button.back a{
+    background: #555555;
+    display: block;
+    padding: 5px;
+    color: white;
+    text-decoration: none;
+}
+
+#window .win table #button.back a:hover{
+    background: #666666;
+    text-decoration: none;
+}
+
+
+#window .win table #button.add{
+    float: left;
+    margin: 5px;
+    border: 1px double #007700;
+    background: #555555;
+    /*display: block;*/
+    width: 150px;
+    padding: 5px;
+    color: white;
+    text-decoration: none;
+}
+
+#window .win table #button.add:hover{
+    background: #666666;
+    text-decoration: none;
+}

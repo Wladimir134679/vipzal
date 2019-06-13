@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Авторизация</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/auth.css}" href = "../static/css/auth.css"/>
+</head>
+<body>
+        <h1 class="title">Авторизация</h1>
+        <form th:object="${userForm}" th:action="@{/auth}" method="POST">
+            <table class="table-input" cellspacing="0">
+                <tr>
+                    <td class="info">
+                        Почта:
+                    </td>
+                    <td class="input">
+                        <input type="text" th:field="*{email}">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="info">
+                        Пароль:
+                    </td>
+                    <td class="input">
+                        <input type="text" th:field="*{password}">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="back">
+                        <div>
+                            <a th:href="@{/index}">На главную</a>
+                        </div>
+                    </td>
+                    <td class="input-submit">
+                        <input type="submit" value="Войти">
+                    </td>
+                </tr>
+                <tr th:if="${error} != null">
+                    <td colspan="2" class="error">
+                        <div th:text="${error}"></div>
+                    </td>
+                </tr>
+            </table>
+        </form>
+</body>
+</html>

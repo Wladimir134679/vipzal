@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Профиль</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" href = "../static/css/style.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/profile.css}" href = "../static/css/profile.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/window.css}" href = "../static/css/window.css"/>
+</head>
+<body>
+    <div th:replace="fragments :: header"></div>
+    <br>
+    <table id="table-tab" cellspacing="0">
+        <tr>
+            <th>
+                <a th:href="@{/profile?mode=main}">Основаная информация</a>
+            </th>
+            <th>
+                <a th:href="@{/profile?mode=schedule}">Расписание тренеровок</a>
+            </th>
+            <th>
+                <a th:href="@{/profile?mode=setting}">Настройки</a>
+            </th>
+        </tr>
+        <tr>
+            <td colspan="999" class="data" th:switch="${modeDraw}">
+                <div th:case="main">
+                    <h3>Ваши данные</h3>
+                    <table id="table-data" th:object="${userData}" cellspacing="0">
+                        <tr>
+                            <td>
+                                ФИО:
+                            </td>
+                            <td>
+                                <span th:text="*{getFIO()}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Возраст:
+                            </td>
+                            <td>
+                                <span th:text="*{getAge()}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Рост:
+                            </td>
+                            <td>
+                                <span th:text="*{getGrowth()}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Вес:
+                            </td>
+                            <td>
+                                <span th:text="*{getMass()}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Почта:
+                            </td>
+                            <td>
+                                <span th:text="*{getEmail()}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Адрес жительства:
+                            </td>
+                            <td>
+                                <span th:text="*{getAddress()}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Номер телефона:
+                            </td>
+                            <td>
+                                <span th:text="*{getPhone()}"></span>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <h3>Ваши болезни</h3>
+                    <table id="table-data" cellspacing="0">
+                        <tr>
+                            <th>
+                                Название
+                            </th>
+                            <th>
+                                Описание
+                            </th>
+                            <th>
+                                Удалить
+                            </th>
+                        </tr>
+                        <tr th:each="data : ${listDiseases}">
+                            <td class="name">
+                                <span th:text="*{data.getName()}"></span>
+                            </td>
+                            <td>
+                                <span th:text="*{data.getDescription()}"></span>
+                            </td>
+                            <td class="button-del">
+                                <div id="button" class="delete">
+                                    <a th:href="@{/profile/deleteDiseases?id=} + *{data.getID()}">Удалить</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="99">
+                                <div id="button" class="add">
+                                    <a th:href="@{/profile?mode=main&win=addDisease}">Добавить</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="body_schedule" th:case="schedule">
+                    <h3>Ваши тренера</h3>
+                    <table id="table-data" cellspacing="0">
+                        <tr>
+                            <th>
+                                ФИО
+                            </th>
+                            <th>
+                                Номер телефона
+                            </th>
+                            <th>
+                                Почта
+                            </th>
+                            <th>
+                                Провёл тренеровок
+                            </th>
+                        </tr>
+                        <tr th:each="data : ${listTrainer}">
+                            <td>
+                                <span th:text="*{data.getFIO()}"></span>
+                            </td>
+                            <td>
+                                <span th:text="*{data.getPhone()}"></span>
+                            </td>
+                            <td>
+                                <span th:text="*{data.getEmail()}"></span>
+                            </td>
+                            <td>
+                                <span th:text="${data.getNumClass()}"></span>
+                            </td>
+                        </tr>
+                    </table>
+                    <h3>Ваши тренеровки</h3>
+                    <table id="table-data" cellspacing="0">
+                        <tr>
+                            <th>Дата</th>
+                            <th>Время</th>
+                            <th>ФИО тренера</th>
+                        </tr>
+                        <th:block th:each="data : ${listTrainings}">
+                            <tr>
+                                <td>
+                                    <span th:text="${data.getData()}"></span>
+                                </td>
+                                <td>
+                                    <span th:text="${data.getTime()}"></span>
+                                </td>
+                                <td>
+                                    <span th:text="${data.getFIOTrainer()}"></span>
+                                </td>
+                            </tr>
+                        </th:block>
+                    </table>
+                </div>
+                <div th:case="setting">
+                    <form th:object="${userForm}" th:action="@{/profile/setting/save}" method="POST">
+                        <table id="set-data">
+                            <tr>
+                                <th>
+                                    ФИО:
+                                </th>
+                                <td>
+                                    <input type="text" th:field="*{fio}">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Почта:
+                                </th>
+                                <td>
+                                    <input type="text" th:field="*{email}">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Возраст:
+                                </th>
+                                <td>
+                                    <input type="text" th:field="*{age}">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Номер телефона:
+                                </th>
+                                <td>
+                                    <input type="text" th:field="*{phone}">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Адрес жительства:
+                                </th>
+                                <td>
+                                    <input type="text" th:field="*{address}">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Рост:
+                                </th>
+                                <td>
+                                    <input type="text" th:field="*{growth}">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Пароль:
+                                </th>
+                                <td>
+                                    <input type="text" th:field="*{password}">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="999">
+                                    <input type="submit" value="Сохранить">
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <br>
+
+    <div id="window" class="background" th:if="${isAddDisease}">
+        <div class="win">
+            <form th:object="${diseaseForm}" th:action="@{/profile/addDisease}" method="POST">
+                <table cellspacing="0">
+                    <tr>
+                        <th colspan="999">
+                            Добавить болезнь
+                        </th>
+                    </tr>
+                    <tr>
+                        <td class="body">
+                            <p>
+                                <b>Название болезни</b>
+                            </p>
+                            <input type="text" th:field="*{name}">
+                            <br>
+                            <p>
+                                <b>Описание болезни</b>
+                            </p>
+                            <textarea type="text" th:field="*{description}"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="buttons">
+                            <div id="button" class="back">
+                                <a th:href="@{/profile?mode=main}">Назад</a>
+                            </div>
+                            <input id="button" class="add" type="submit" value="Добавить">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+
+    <div th:replace="fragments :: footer"></div>
+</body>
+</html>

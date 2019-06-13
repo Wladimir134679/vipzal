@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>О нас/О сайте</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" href = "../static/css/style.css"/>
+</head>
+<body>
+<div th:replace="fragments :: header"></div>
+<br>
+
+<table id="index-table" cellspacing="0">
+    <tr>
+        <td>
+            <div>
+                Сайт написан на spring(движок) + thymeleaf(шаблонизатор) + hibernate(для базы данных).
+                <br>
+                Используется mysql база данных.
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>
+                Мы честная компания. Предоставляем услуги спорт-тренеров и занятие в зале.
+            </div>
+        </td>
+    </tr>
+</table>
+<br>
+<div th:replace="~{fragments :: footer}"> </div>
+</body>
+</html>

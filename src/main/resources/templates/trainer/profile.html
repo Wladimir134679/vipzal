@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Профиль</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" href = ".../static/css/style.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/trainerProfile.css}" href = ".../static/css/trainerProfile.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/window.css}" href = ".../static/css/window.css"/>
+</head>
+<body>
+
+    <div th:replace="fragments :: header"></div>
+    <br>
+
+    <table id="table-tab" cellspacing="0">
+        <tr>
+            <th>
+                <a th:href="@{/trainer/profile?mode=main}">Главная</a>
+            </th>
+            <th>
+                <a th:href="@{/trainer/profile?mode=schedule}">Расписание</a>
+            </th>
+            <th>
+                <a th:href="@{/trainer/profile?mode=setting}">Настройки</a>
+            </th>
+        </tr>
+        <tr>
+            <td colspan="3" class="info-body" th:switch="${modeDraw}">
+                <div th:case="main">
+                    <table id="table-data" th:object="${data}" cellspacing="0">
+                        <tr>
+                            <td class="info">
+                                ФИО:
+                            </td>
+                            <td>
+                                <span th:text="*{getFIO()}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="info">
+                                Почта:
+                            </td>
+                            <td>
+                                <span th:text="*{getEmail()}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="info">
+                                Номер телефона:
+                            </td>
+                            <td>
+                                <span th:text="*{getPhone()}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="info">
+                                Колличество тренировок:
+                            </td>
+                            <td>
+                                <span th:text="*{getNumClass()}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="info">
+                                Описание:
+                            </td>
+                            <td>
+                                <span th:text="*{getDescription()}"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="schedule" th:case="schedule">
+                    <h1>Ученики:</h1>
+                    <table id="table-data">
+                        <tr>
+                            <th>
+                                ФИО
+                            </th>
+                            <th>
+                                Почта
+                            </th>
+                            <th>
+                                Номер телефона
+                            </th>
+                            <th>
+                                Возраст
+                            </th>
+                            <th>
+                                Болезни
+                            </th>
+                        </tr>
+                        <tr th:each="data : ${userList}">
+                            <td>
+                                <span th:text="*{data.getFIO()}"></span>
+                            </td>
+                            <td>
+                                <span th:text="*{data.getEmail()}"></span>
+                            </td>
+                            <td>
+                                <span th:text="*{data.getPhone()}"></span>
+                            </td>
+                            <td>
+                                <span th:text="*{data.getAge()}"></span>
+                            </td>
+                            <td>
+                                <div id="button">
+                                    <a th:href="@{/trainer/profile?mode=schedule&show=disease&idUser=}+*{data.getId()}">Посмотреть</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                    <h1>Расписание</h1>
+                    <table id="table-data">
+                        <tr>
+                            <th>
+                                Дата
+                            </th>
+                            <th>
+                                Время
+                            </th>
+                            <th>
+                                Клиент
+                            </th>
+                            <th>
+                                Удалить
+                            </th>
+                        </tr>
+                        <tr th:each="data : ${trainingsList}">
+                            <td>
+                                <span th:text="*{data.getData()}"></span>
+                            </td>
+                            <td>
+                                <span th:text="*{data.getTime()}"></span>
+                            </td>
+                            <td>
+                                <span th:text="*{data.getFIOUser()}"></span>
+                            </td>
+                            <td>
+                                <div id="button">
+                                    <a th:href="@{/trainer/deleteSchedule?id=}+*{data.getId()}">Удалить</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="999">
+                                <div id="button" >
+                                    <a th:href="@{/trainer/profile?mode=schedule&win=newSchedule}">Новая тренировка</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div th:case="setting">
+                    <form th:object="${trainerForm}" method="POST" th:action="@{/trainer/profile/setting/save}">
+                        <table id="set-data">
+                            <tr>
+                                <th>
+                                    ФИО:
+                                </th>
+                                <td>
+                                    <input type="text" th:field="*{fio}">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Номер телефона:
+                                </th>
+                                <td>
+                                    <input type="text" th:field="*{phone}">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Почта:
+                                </th>
+                                <td>
+                                    <input type="text" th:field="*{email}">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Пароль:
+                                </th>
+                                <td>
+                                    <input type="text" th:field="*{password}">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Описание:
+                                </th>
+                                <td>
+                                    <input type="text" th:field="*{description}">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="999">
+                                    <input type="submit" value="Сохранить">
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <div id="window" class="background" th:if="${isShowDiseases}">
+        <div id="win-diseases">
+            <table class="table-main" cellspacing="0">
+                <tr>
+                    <th>
+                        <span th:text="Болезни + ' ' + ${userData.getFIO()}"></span>
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <div>
+                            <table id="table-data" cellspacing="0">
+                                <tr>
+                                    <th>
+                                        Название
+                                    </th>
+                                    <th>
+                                        Описание
+                                    </th>
+                                </tr>
+                                <tr th:each="data : ${listDiseasesUser}">
+                                    <td>
+                                        <span th:text="*{data.getName()}"></span>
+                                    </td>
+                                    <td>
+                                        <span th:text="*{data.getDescription()}"></span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id="button">
+                            <a th:href="@{/trainer/profile?mode=schedule}">Закрыть</a>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div id="newSchedule" class="background" th:unless="${formUser} == null">
+        <div class="win">
+            <form th:object="${formUser}" th:action="@{/trainer/addTrainings}" method="POST">
+                <table cellspacing="0">
+                    <tr>
+                        <td class="title" colspan="999">
+                            Добавить занятие
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="body">
+                            <h3>Данные тренировки</h3>
+                            <b>Пользовательское ID:</b>
+                            <input type="text" th:field="*{id}">
+                            <br>
+                            <b>Число:</b>
+                            <br>
+                            <input type="number" th:field="*{day}" min="1" max="31">
+                            <br>
+                            <b>Месяц:</b>
+                            <br>
+                            <input type="number" th:field="*{month}" min="1" max="12">
+                            <br>
+                            <b>Год:</b>
+                            <br>
+                            <input type="number" th:field="*{year}" min="2019" max="2021">
+                            <br>
+                            <b>Час:</b>
+                            <br>
+                            <input type="number" th:field="*{hour}" min="9" max="22">
+                            <br>
+                            <br>
+                        </td>
+                        <td class="listUser">
+                            <div>
+                                <h3>Все пользователи</h3>
+                                <table id="table-data" cellspacing="0">
+                                    <tr>
+                                        <th class="title-id">
+                                            ID
+                                        </th>
+                                        <th class="title-id">
+                                            ФИО
+                                        </th>
+                                        <th>
+                                            Номер телефона
+                                        </th>
+                                    </tr>
+                                    <tr th:each="data : ${userListNewSchedule}">
+                                        <td class="title-id">
+                                            <span th:text="${data.getId()}"></span>
+                                        </td>
+                                        <td class="title-id">
+                                            <span th:text="${data.getFIO()}"></span>
+                                        </td>
+                                        <td>
+                                            <span th:text="${data.getPhone()}"></span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="999" class="buttons">
+                            <input type="submit" value="Добавить">
+                            <div class="back">
+                                <a th:href="@{/trainer/profile?mode=schedule}">Отмена</a>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+
+    <br>
+    <div th:replace="fragments :: footer"></div>
+
+</body>
+</html>

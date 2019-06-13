@@ -1,0 +1,110 @@
+#window.background{
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: #000000dd;
+    z-index: 100;
+}
+
+#button{
+    display: block;
+    background: none;
+    border: 1px double #666666;
+}
+
+#button a{
+    text-align: center;
+    display: block;
+    padding: 2px;
+    color: white;
+    background: #444444;
+    text-decoration: none;
+}
+
+#button a:hover{
+    color:white;
+    background: #555;
+    text-decoration: none;
+}
+
+/*   Таблицы с выбором  */
+
+#table-tab{
+    width: 90%;
+    background: none;
+    margin: 5px auto;
+    border: 1px double #880000;
+}
+
+#table-tab th{
+    color: white;
+}
+
+#table-tab th a{
+    font-size: 20px;
+    display: block;
+    background: #444444;
+    padding: 5px;
+    color: white;
+    text-decoration: none;
+}
+
+#table-tab th a:hover{
+    background: #484848;
+}
+
+#table-tab tr td{
+    background: none;
+    alignment: center;
+    color: white;
+}
+
+/*  Изменение данных  */
+
+#set-data{
+    width: 50%;
+    margin: 2px auto;
+    border: 1px double #880000;
+}
+
+#set-data tr{
+    text-align: center;
+}
+
+#set-data th{
+    text-align: right;
+    color: white;
+    padding: 2px 5px;
+}
+
+#set-data td{
+    color:white;
+}
+
+#set-data td input[type="text"]{
+    width: 95%;
+    color: white;
+    border: 1px double #999999;
+    background: #333;
+}
+
+#set-data td input[type="text"]:hover{
+    background: #373737;
+}
+
+#set-data td input[type="submit"]{
+    width: 33%;
+    color: white;
+    border: 1px double #007700;
+    background: #004400;
+    padding: 2px;
+    height: 30px;
+}
+
+#set-data td input[type="submit"]:hover{
+    background: #004900;
+}

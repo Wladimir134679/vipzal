@@ -1,0 +1,33 @@
+#auth{
+    width: 50%;
+    margin: 0px auto;
+    border: 1px double white;
+    color: white;
+    border-bottom: none;
+}
+
+#auth tr td{
+    padding: 5px;
+    border-bottom: 2px double #bbbbbb;
+}
+
+#auth tr td.input_text input{
+    width: 95%;
+    border: 1px double #dddddd;
+    background: none;
+    color: white;
+}
+
+#auth tr td.input_enter input{
+    width: 25%;
+    border: 1px double #dddddd;
+    background: #006600;
+}
+
+#auth tr td.input_enter input:hover{
+    background: #008800;
+}
+
+h1{
+    color: white;
+}

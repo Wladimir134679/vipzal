@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" href = "../static/css/style.css"/>
+</head>
+<body>
+    <h1 align="center" style="color:white;">Регистрация</h1>
+    <br>
+    <div id="body-reg">
+        <form th:object="${userForm}" th:action="@{/reg}" method="POST">
+            <table class="table-reg" cellspacing="0">
+                <tr>
+                    <td class="info">
+                        Ф.И.О:
+                    </td>
+                    <td class="input">
+                        <input type="text" th:field="*{fio}">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="info">
+                        Возраст:
+                    </td>
+                    <td class="input">
+                        <input type="text" th:field="*{age}">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="info">
+                        Рост тела(см):
+                    </td>
+                    <td class="input">
+                        <input type="text" th:field="*{growth}">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="info">
+                        Масса тела(кг):
+                    </td>
+                   <td class="input">
+                       <input type="text" th:field="*{mass}">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="info">
+                        Номер телефона:
+                    </td>
+                    <td class="input">
+                        <input type="text" th:field="*{phone}">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="info">
+                        Адрес прожимвания:
+                    </td>
+                    <td class="input">
+                        <input type="text" th:field="*{address}">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="info">
+                        EMAIL:
+                    </td>
+                    <td class="input">
+                        <input type="text" th:field="*{email}">
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="info">
+                        Пароль:
+                    </td>
+                    <td class="input">
+                        <input type="text" th:field="*{password}">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="info">
+                        Подтвердить пароль:
+                    </td>
+                    <td class="input">
+                        <input type="text" th:field="*{password1}">
+                    </td>
+                </tr>
+
+
+
+                <tr>
+                    <td colspan="2" class="enter">
+                        <input type="submit" value="Регистрация">
+                    </td>
+                </tr>
+
+                <tr class="error" th:if="${errorMessage} != null">
+                    <td>
+                        <div th:text="${errorMessage}"></div>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <br>
+    <div th:replace="fragments :: footer"></div>
+</body>
+</html>
